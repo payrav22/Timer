@@ -1,0 +1,170 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.timer {
+    font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
+    position: fixed;
+    top: 48px;
+    right: 48px;
+    color: #fff;
+}
+
+.timer__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background-color: #252628;
+    border-radius: 50%;
+    border: 10px solid #333436;
+    box-shadow: 0 0 16px 4px #333436;
+    overflow: hidden;
+    padding: 18px 0;
+}
+
+.timer__output {
+    order: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 50px;
+    gap: 0 24px;
+}
+
+.timer__input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #ffffff;
+    width: 55px;
+    height: 40px;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 0;
+}
+
+.timer__input:focus {
+    color: #676868;
+}
+
+.timer__input::-webkit-outer-spin-button,
+.timer__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.timer__label--minutes::after {
+    content: ":";
+    position: absolute;
+    top: 62px;
+    left: 93.5px;
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.timer__colon {
+    margin-top: -10px;
+}
+
+.timer__actions {
+    display: flex;
+    align-items: center;
+    gap: 0 8px;
+    order: 3;
+}
+
+.timer__action {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+    overflow: hidden;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: .3s;
+}
+
+.timer__action[type="submit"] {
+    background-image: url('data:image/svg+xml,<svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="m8.248 4.212 11.05 6.574c.694.412.91 1.29.483 1.961-.121.19-.287.35-.483.467l-11.05 6.574c-.694.413-1.602.204-2.03-.467A1.39 1.39 0 0 1 6 18.574V5.426C6 4.638 6.66 4 7.475 4c.273 0 .54.073.773.212z" fill="white"></path></svg>');
+    background-color: #8b3dff;
+}
+
+.timer__action[type="submit"]:hover {
+    background-color: #7731d8;
+}
+
+.timer__action[type="reset"] {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M8.75 5.52V9a.75.75 0 0 0 1.5 0V5c0-.97-.78-1.75-1.75-1.75h-4a.75.75 0 0 0 0 1.5h2.6a8.75 8.75 0 1 0 9.12-.42.75.75 0 1 0-.73 1.32 7.25 7.25 0 1 1-6.74-.13z"></path></svg>');
+    background-color: #333436;
+}
+
+.timer__action[type="reset"]:hover {
+    background-color: hsla(0, 0%, 100%, .15);
+}
+
+.timer__controls {
+    order: 1;
+    display: flex;
+    align-items: center;
+    background-color: #333436;
+    border-radius: 50px;
+    font-size: 12px;
+    padding: 4px;
+}
+
+.timer__control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 50%;
+    overflow: hidden;
+    color: transparent;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.timer__control:hover {
+    background-color: hsla(0, 0%, 100%, .07);
+}
+
+.timer__control--decrement {
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 6a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5A.75.75 0 0 1 2 6Z' fill='white'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.timer__control--increment {
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.25 9.25a.75.75 0 0 0 1.5 0v-2.5h2.5a.75.75 0 0 0 0-1.5h-2.5v-2.5a.75.75 0 0 0-1.5 0v2.5h-2.5a.75.75 0 0 0 0 1.5h2.5v2.5Z' fill='white'%3E%3C/path%3E%3C/svg%3E");
+}

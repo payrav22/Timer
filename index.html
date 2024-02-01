@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таймер</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <aside class="timer">
+        <h1 class="visually-hidden">Таймер</h1>
+
+        <form class="timer__form">
+            <div class="timer__output">
+                <label class="timer__label timer__label--minutes">
+                    <span class="visually-hidden">Минуты</span>
+                    <input class="timer__input" 
+                        type="number" 
+                        name="minutes"
+                        min="0" 
+                        max="60" 
+                        value="05"
+                        autocomplete="off">
+                </label>
+                <label class="timer__label">
+                    <span class="visually-hidden">Секунды</span>
+                    <input class="timer__input" 
+                        type="number" 
+                        name="seconds" 
+                        min="0" 
+                        max="59" 
+                        value="00"
+                        autocomplete="off">
+                </label>
+            </div>
+
+            <div class="timer__actions">
+                <button class="timer__action" type="submit">Старт</button>
+                <button class="timer__action" type="reset">Сброс</button>
+            </div>
+
+            <div class="timer__controls">
+                <button class="timer__control timer__control--decrement" type="button">-</button>
+                1 мин
+                <button class="timer__control timer__control--increment" type="button">+</button>
+            </div>
+        </form>
+    </aside>
+
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
