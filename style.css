@@ -145,6 +145,7 @@
     color: #ff9800;
     transition: .2s;
 }
+
 .timer__actions {
     display: flex;
     align-items: center;

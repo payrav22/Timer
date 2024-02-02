@@ -4,6 +4,7 @@ const incrementButton = document.querySelector('.timer__control--increment');
 const decrementButton = document.querySelector('.timer__control--decrement');
 const startButton = document.getElementById('start');
 const resetButton = document.getElementById('reset');
+const outputTimer = document.getElementById('output');
 
 let minutesField = document.getElementById('minutes');
 let secondsField = document.getElementById('seconds');
@@ -50,6 +51,7 @@ resetButton.addEventListener('click', () => {
     form.classList.remove('shake-shadow');
     minutesField.classList.remove('shake-color');
     secondsField.classList.remove('shake-color');
+    outputTimer.classList.remove('shake-color');
 })
 
 function timerCount() {
@@ -60,6 +62,7 @@ function timerCount() {
         form.classList.add('shake-shadow');
         minutesField.classList.add('shake-color');
         secondsField.classList.add('shake-color');
+        outputTimer.classList.add('shake-color');
     } else if (secondsField.value != 0) {
         secondsField.value = (--secondsField.value).toString().padStart(2, '0');
     } else if (minutesField.value != 0 && secondsField.value == 0) {
