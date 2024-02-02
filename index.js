@@ -46,6 +46,8 @@ resetButton.addEventListener('click', () => {
     minutesField.value = 0;
     secondsField.value = 0;
     clearInterval(initialTimer)
+    minutesField.removeAttribute('disabled');
+    minutesField.removeAttribute('disabled');
     startButton.removeAttribute('disabled');
     timer.classList.remove('shake');
     form.classList.remove('shake-shadow');
@@ -58,6 +60,8 @@ function timerCount() {
     if (minutesField.value == 0 && secondsField.value == 0) {
         minutesField.value = '00';
         secondsField.value = '00';
+        minutesField.setAttribute('disabled', 'disabled');
+        secondsField.setAttribute('disabled', 'disabled');
         timer.classList.add('shake');
         form.classList.add('shake-shadow');
         minutesField.classList.add('shake-color');
@@ -86,18 +90,4 @@ secondsField.addEventListener('input', () => {
         secondsField.value = 59;
     }
 });
-
-// let timer = 10000;
-// const form = document.querySelector('.timer__form');
-// const submitButton = form.querySelector('[type="submit" ]');
-
-// const getMinutes = () => (Math.floor(timer / 60000)).toString().padStart(2, '0');
-// const getSeconds = () => (timer - getMinutes() * 600000).toString().padStart(2, '0');
-
-// const updateTimer = (newTimer) => {
-//     timer = newTimer;
-//     form.minutes.value = getMinutes(timer);
-//     form.seconds.value = getSeconds(timer);
-//     submitButton.setAttribute('disabled', 'disabled');
-// };
 
