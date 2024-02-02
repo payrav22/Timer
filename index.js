@@ -1,52 +1,100 @@
-const inputMin = document.getElementById('min');
-const buttonMinAdd = document.querySelector('.minutes__button--add');
-const buttonMinReduce = document.querySelector('.minutes__button--reduce');
+const timer = document.querySelector('.timer');
+const form = document.querySelector('form');
+const incrementButton = document.querySelector('.timer__control--increment');
+const decrementButton = document.querySelector('.timer__control--decrement');
+const startButton = document.getElementById('start');
+const resetButton = document.getElementById('reset');
 
-buttonMinAdd.addEventListener('click', () => {
-    if (inputMin.value < 99) {
-        inputMin.value = (++inputMin.value).toString().padStart(2, '0');
+let minutesField = document.getElementById('minutes');
+let secondsField = document.getElementById('seconds');
+let initialTimer = 300000;
 
+incrementButton.addEventListener('click', () => {
+    if (minutesField.value < 99) {
+        minutesField.value = (++minutesField.value).toString().padStart(2, '0');
     };
 });
 
-buttonMinReduce.addEventListener('click', () => {
-    if (inputMin.value >= 0) {
-        inputMin.value = (--inputMin.value).toString().padStart(2, '0');;
+decrementButton.addEventListener('click', () => {
+    if (minutesField.value >= 1) {
+        minutesField.value = (--minutesField.value).toString().padStart(2, '0');;
     };
 });
 
+minutesField.addEventListener('click', () => {
+    clearInterval(initialTimer);
+    startButton.removeAttribute('disabled');
+});
 
-const start = document.getElementById('start');
-const reset = document.getElementById('reset');
-const min = document.getElementById("min");
-const sec = document.getElementById("sec");
+secondsField.addEventListener('click', () => {
+    clearInterval(initialTimer);
+    startButton.removeAttribute('disabled');
+});
 
-let startTimer = null;
-
-start.addEventListener('click', () => {
+startButton.addEventListener('click', () => {
     function startInterval() {
-        startTimer = setInterval( () => {
-            timer();
+        initialTimer = setInterval(() => {
+            timerCount();
         }, 1000);
     }
     startInterval();
+    startButton.setAttribute('disabled', 'disabled');
 })
 
-reset.addEventListener('click', () => {
-    min.value = 0;
-    sec.value = 0;
-    clearInterval(startTimer)
+resetButton.addEventListener('click', () => {
+    minutesField.value = 0;
+    secondsField.value = 0;
+    clearInterval(initialTimer)
+    startButton.removeAttribute('disabled');
+    timer.classList.remove('shake');
+    form.classList.remove('shake-shadow');
+    minutesField.classList.remove('shake-color');
+    secondsField.classList.remove('shake-color');
 })
 
-function timer() {
-    if (min.value == 0 && sec.value == 0) {
-        min.value = 0;
-        sec.value = 0;
-    } else if (sec.value != 0) {
-        sec.value = (--sec.value).toString().padStart(2, '0');
-    } else if (min.value != 0 && sec.value == 0) {
-        sec.value = 59;
-        min.value = (--min.value).toString().padStart(2, '0');
+function timerCount() {
+    if (minutesField.value == 0 && secondsField.value == 0) {
+        minutesField.value = '00';
+        secondsField.value = '00';
+        timer.classList.add('shake');
+        form.classList.add('shake-shadow');
+        minutesField.classList.add('shake-color');
+        secondsField.classList.add('shake-color');
+    } else if (secondsField.value != 0) {
+        secondsField.value = (--secondsField.value).toString().padStart(2, '0');
+    } else if (minutesField.value != 0 && secondsField.value == 0) {
+        secondsField.value = 59;
+        minutesField.value = (--minutesField.value).toString().padStart(2, '0');
     }
 }
+
+form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+})
+
+minutesField.addEventListener('input', () => {
+    if (minutesField.value > 99) {
+        minutesField.value = 99;
+    }
+})
+
+secondsField.addEventListener('input', () => {
+    if (secondsField.value > 59) {
+        secondsField.value = 59;
+    }
+});
+
+// let timer = 10000;
+// const form = document.querySelector('.timer__form');
+// const submitButton = form.querySelector('[type="submit" ]');
+
+// const getMinutes = () => (Math.floor(timer / 60000)).toString().padStart(2, '0');
+// const getSeconds = () => (timer - getMinutes() * 600000).toString().padStart(2, '0');
+
+// const updateTimer = (newTimer) => {
+//     timer = newTimer;
+//     form.minutes.value = getMinutes(timer);
+//     form.seconds.value = getSeconds(timer);
+//     submitButton.setAttribute('disabled', 'disabled');
+// };
 
