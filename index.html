@@ -13,32 +13,22 @@
         <h1 class="visually-hidden">Таймер</h1>
 
         <form class="timer__form">
-            <div class="timer__output" id="output">
+            <div class="timer__output">
                 <label class="timer__label timer__label--minutes">
                     <span class="visually-hidden">Минуты</span>
-                    <input class="timer__input" type="number"
-                        id="minutes"
-                        name="minutes"
-                        min="0"
-                        max="99"
-                        value="05"
+                    <input class="timer__input" type="number" name="minutes" min="0" max="99" value="05"
                         autocomplete="off">
                 </label>
                 <label class="timer__label">
                     <span class="visually-hidden">Секунды</span>
-                    <input class="timer__input" type="number" 
-                        id="seconds" 
-                        name="seconds" 
-                        min="0"
-                        max="59"
-                        value="00"
+                    <input class="timer__input" type="number" name="seconds" min="0" max="59" value="00"
                         autocomplete="off">
                 </label>
             </div>
 
             <div class="timer__actions">
-                <button class="timer__action" id="start" type="submit">Старт</button>
-                <button class="timer__action" id="reset" type="reset">Сброс</button>
+                <button class="timer__action" type="submit">Старт</button>
+                <button class="timer__action" type="reset">Сброс</button>
             </div>
 
             <div class="timer__controls">
@@ -48,7 +38,6 @@
             </div>
         </form>
     </aside>
-
 
     <script src="./index.js"></script>
 </body>
