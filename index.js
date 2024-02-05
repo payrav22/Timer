@@ -12,6 +12,7 @@ let intervalID;
 incrementButton.addEventListener('click', () => {
     if (minutesField.value < '99') {
         minutesField.value = (++minutesField.value).toString().padStart(2, '0');
+        timer.classList.remove('shake');
     };
 });
 
@@ -24,11 +25,13 @@ decrementButton.addEventListener('click', () => {
 minutesField.addEventListener('click', () => {
     intervalID && clearInterval(intervalID);
     startButton.removeAttribute('disabled');
+    timer.classList.remove('shake');
 });
 
 secondsField.addEventListener('click', () => {
     intervalID && clearInterval(intervalID);
     startButton.removeAttribute('disabled');
+    timer.classList.remove('shake');
 });
 
 startButton.addEventListener('click', (evt) => {
@@ -37,6 +40,8 @@ startButton.addEventListener('click', (evt) => {
     intervalID = setInterval(() => {
         if (minutesField.value === '00' && secondsField.value === '00') {
             timer.classList.add('shake');
+            clearInterval(intervalID);
+            evt.target.removeAttribute('disabled');
         } else if (secondsField.value !== '00') {
             secondsField.value = (--secondsField.value).toString().padStart(2, '0');
         } else if (minutesField.value !== '00' && secondsField.value === '00') {
